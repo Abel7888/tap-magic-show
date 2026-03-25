@@ -227,7 +227,7 @@ const FinalScreen: React.FC = () => (
     </div>
 
     <div className="w-full space-y-3 animate-fade-up delay-600">
-      <a href="#book" className="btn-press block w-full py-4 rounded-xl bg-demo-light text-demo-dark font-bold text-[16px] text-center">
+      <a href="https://calendly.com/abelassefa19/schedule-your-assessment" target="_blank" rel="noopener noreferrer" className="btn-press block w-full py-4 rounded-xl bg-demo-light text-demo-dark font-bold text-[16px] text-center">
         Book a free 15-min call →
       </a>
       <a href="#video" className="btn-press block w-full py-3.5 rounded-xl border-2 border-demo-light/30 text-demo-light font-semibold text-[15px] text-center">
