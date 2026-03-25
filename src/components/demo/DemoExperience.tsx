@@ -153,7 +153,24 @@ const IntroScreen: React.FC<{ onStart: () => void }> = ({ onStart }) => (
       </p>
     </div>
 
-    <div className="flex flex-wrap justify-center gap-2 animate-fade-up delay-200">
+    {/* Play Button */}
+    <button
+      onClick={onStart}
+      className="btn-press group relative w-24 h-24 rounded-full flex items-center justify-center animate-fade-up delay-200"
+      style={{
+        background: "linear-gradient(135deg, #3B82F6, #10B981)",
+        boxShadow: "0 0 40px rgba(59,130,246,0.3), 0 0 80px rgba(16,185,129,0.15)",
+      }}
+    >
+      <div className="absolute inset-0 rounded-full animate-ping opacity-20" style={{ background: "linear-gradient(135deg, #3B82F6, #10B981)" }} />
+      <div className="absolute inset-[-6px] rounded-full border-2 border-demo-light/10 group-hover:border-demo-light/25 transition-colors" />
+      <svg className="w-10 h-10 text-demo-light ml-1 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </button>
+    <p className="text-[13px] text-demo-light/40 animate-fade-up delay-300 -mt-2">Tap to start</p>
+
+    <div className="flex flex-wrap justify-center gap-2 animate-fade-up delay-400">
       {[
         { label: "Agent 1 — Never miss a job", color: "#3B82F6" },
         { label: "Agent 2 — Lost jobs recovery", color: "#10B981" },
@@ -165,12 +182,7 @@ const IntroScreen: React.FC<{ onStart: () => void }> = ({ onStart }) => (
       ))}
     </div>
 
-    <div className="space-y-3 w-full animate-fade-up delay-400">
-      <button onClick={onStart} className="btn-press w-full py-4 rounded-xl bg-demo-light text-demo-dark font-bold text-[16px]">
-        Start the demo →
-      </button>
-      <p className="text-[13px] text-demo-light/30">Takes 3 minutes. No sign-up needed.</p>
-    </div>
+    <p className="text-[13px] text-demo-light/30 animate-fade-up delay-500">Takes 3 minutes. No sign-up needed.</p>
   </div>
 );
 
