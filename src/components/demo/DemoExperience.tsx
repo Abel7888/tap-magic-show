@@ -95,6 +95,13 @@ const DemoExperience: React.FC = () => {
       {showConfetti && <Confetti />}
 
       <div className="w-full h-full flex flex-col" style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}>
+        {/* Sticky business header */}
+        <div className="shrink-0 px-4 pt-3 pb-2 border-b border-white/5 flex items-center justify-center gap-2">
+          <div className="w-6 h-6 rounded-md bg-gradient-to-br from-blue-500 to-emerald-500 flex items-center justify-center">
+            <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          </div>
+          <p className="text-[13px] font-bold text-demo-light tracking-wide">Home Services AI Agents</p>
+        </div>
         {/* Header bar for chapters */}
         {config && screen !== "intro" && screen !== "final" && (
           <div className="shrink-0 px-4 pt-3 pb-2 space-y-2">
