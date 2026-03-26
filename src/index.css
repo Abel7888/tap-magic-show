@@ -143,12 +143,19 @@
 .delay-700 { animation-delay: 700ms; }
 .delay-800 { animation-delay: 800ms; }
 
-/* Button press */
+/* Button press + subtle pulse */
 .btn-press {
   transition: transform 150ms ease;
+  animation: btn-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 .btn-press:active {
   transform: scale(0.97);
+  animation: none;
+}
+
+@keyframes btn-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; transform: scale(1); }
+  50% { box-shadow: 0 0 0 4px transparent; transform: scale(1.015); }
 }
 
 /* Phone mockup */
