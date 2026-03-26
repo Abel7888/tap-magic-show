@@ -1,6 +1,7 @@
 import React from "react";
 import PhoneMockup from "./PhoneMockup";
 import AnimatedCounter from "./AnimatedCounter";
+import SmsBubble from "./SmsBubble";
 
 interface StepProps {
   onNext: () => void;
@@ -54,14 +55,8 @@ export const Ch2Step2: React.FC<StepProps> = ({ onNext }) => (
 
     <PhoneMockup>
       <div className="pt-6 pb-4 space-y-3">
-        <div className="animate-fade-up delay-200">
-          <div className="bg-demo-emerald rounded-2xl rounded-tl-sm p-3 max-w-[90%]">
-            <p className="text-[13px] text-white leading-relaxed">
-              Hey! This is Mike's Plumbing — sorry we missed your call. Still need a hand? Reply here or grab a time: <span className="underline">book.mikesplumbing.com</span> 👍
-            </p>
-          </div>
-          <p className="text-[10px] text-demo-text-muted mt-1">Sent · 2:15 PM</p>
-        </div>
+        <SmsBubble from="outgoing" sender="Mike's Plumbing" text="Hey! This is Mike's Plumbing — sorry we missed your call. Still need a hand? Reply here or grab a time: book.mikesplumbing.com 👍" delay={200} />
+        <p className="text-[10px] text-demo-text-muted mt-1 text-right">Sent · 2:15 PM</p>
       </div>
     </PhoneMockup>
 
@@ -81,20 +76,12 @@ export const Ch2Step3: React.FC<StepProps> = ({ onNext }) => (
   <div className="space-y-5">
     <PhoneMockup>
       <div className="pt-4 pb-4 space-y-2">
-        {[
-          { from: "ai", text: "Hey! This is Mike's Plumbing — sorry we missed your call. Still need a hand?" },
-          { from: "user", text: "Yeah I need my furnace looked at" },
-          { from: "ai", text: "We can help with that! Are you in the Edmonton area?" },
-          { from: "user", text: "Yes — Windermere" },
-          { from: "ai", text: "Perfect — we cover Windermere. Want to grab a time this week? Here's our booking link: book.mikesplumbing.com" },
-          { from: "user", text: "Done — booked for Thursday" },
-        ].map((msg, i) => (
-          <div key={i} className="animate-fade-up" style={{ animationDelay: `${i * 180}ms` }}>
-            <div className={`rounded-2xl p-2.5 max-w-[82%] ${msg.from === "ai" ? "bg-demo-emerald rounded-tl-sm" : "bg-gray-100 rounded-tr-sm ml-auto"}`}>
-              <p className={`text-[12px] leading-relaxed ${msg.from === "ai" ? "text-white" : "text-demo-text"}`}>{msg.text}</p>
-            </div>
-          </div>
-        ))}
+        <SmsBubble from="outgoing" sender="Mike's Plumbing AI" text="Hey! This is Mike's Plumbing — sorry we missed your call. Still need a hand?" delay={0} />
+        <SmsBubble from="incoming" sender="James" text="Yeah I need my furnace looked at" delay={180} />
+        <SmsBubble from="outgoing" sender="Mike's Plumbing AI" text="We can help with that! Are you in the Edmonton area?" delay={360} />
+        <SmsBubble from="incoming" sender="James" text="Yes — Windermere" delay={540} />
+        <SmsBubble from="outgoing" sender="Mike's Plumbing AI" text="Perfect — we cover Windermere. Want to grab a time this week? Here's our booking link: book.mikesplumbing.com" delay={720} />
+        <SmsBubble from="incoming" sender="James" text="Done — booked for Thursday" delay={900} />
       </div>
     </PhoneMockup>
 
