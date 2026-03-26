@@ -1,6 +1,7 @@
 import React from "react";
 import PhoneMockup from "./PhoneMockup";
 import AnimatedCounter from "./AnimatedCounter";
+import SmsBubble from "./SmsBubble";
 
 interface StepProps {
   onNext: () => void;
@@ -102,17 +103,9 @@ export const Ch1Step3: React.FC<StepProps> = ({ onNext }) => (
           </div>
         </div>
 
-        <div className="animate-fade-up delay-300 space-y-2">
-          <div className="bg-demo-blue rounded-2xl rounded-tl-sm p-3 max-w-[85%]">
-            <p className="text-[13px] text-white leading-relaxed">
-              "Thanks for calling Mike's Plumbing! We're with a customer right now but I can get you booked in. What type of job do you need help with today?"
-            </p>
-          </div>
-          <div className="bg-gray-100 rounded-2xl rounded-tr-sm p-3 max-w-[80%] ml-auto">
-            <p className="text-[13px] text-demo-text leading-relaxed">
-              "I have a leaking pipe under my kitchen sink."
-            </p>
-          </div>
+        <div className="delay-300 space-y-2">
+          <SmsBubble from="incoming" sender="Mike's Plumbing AI" text="Thanks for calling Mike's Plumbing! We're with a customer right now but I can get you booked in. What type of job do you need help with today?" delay={300} />
+          <SmsBubble from="outgoing" sender="Sarah" text="I have a leaking pipe under my kitchen sink." delay={600} />
         </div>
       </div>
     </PhoneMockup>
@@ -132,19 +125,11 @@ export const Ch1Step4: React.FC<StepProps> = ({ onNext }) => (
   <div className="space-y-5">
     <PhoneMockup>
       <div className="pt-4 pb-4 space-y-2">
-        {[
-          { from: "ai", text: "Got it — leaking pipe. What's the address?" },
-          { from: "user", text: "147 Whyte Ave" },
-          { from: "ai", text: "Perfect. When works best — are you available tomorrow morning?" },
-          { from: "user", text: "Yes, 9am works" },
-          { from: "ai", text: "Let me check availability..." },
-        ].map((msg, i) => (
-          <div key={i} className={`animate-fade-up`} style={{ animationDelay: `${i * 200}ms` }}>
-            <div className={`rounded-2xl p-2.5 max-w-[82%] ${msg.from === "ai" ? "bg-demo-blue rounded-tl-sm" : "bg-gray-100 rounded-tr-sm ml-auto"}`}>
-              <p className={`text-[13px] leading-relaxed ${msg.from === "ai" ? "text-white" : "text-demo-text"}`}>{msg.text}</p>
-            </div>
-          </div>
-        ))}
+        <SmsBubble from="incoming" sender="Mike's Plumbing AI" text="Got it — leaking pipe. What's the address?" delay={0} />
+        <SmsBubble from="outgoing" sender="Sarah" text="147 Whyte Ave" delay={200} />
+        <SmsBubble from="incoming" sender="Mike's Plumbing AI" text="Perfect. When works best — are you available tomorrow morning?" delay={400} />
+        <SmsBubble from="outgoing" sender="Sarah" text="Yes, 9am works" delay={600} />
+        <SmsBubble from="incoming" sender="Mike's Plumbing AI" text="Let me check availability..." delay={800} />
         <div className="animate-fade-up delay-800 bg-blue-50 rounded-xl p-3 mt-2">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-demo-blue mb-2">📅 Calendar</p>
           <div className="bg-demo-blue/10 border border-demo-blue/30 rounded-lg p-2 flex items-center gap-2">
